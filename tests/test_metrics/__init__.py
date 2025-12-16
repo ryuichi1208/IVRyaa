@@ -1,1 +1,1 @@
-"""メトリクス収集モジュールのテスト"""
+"""Tests for metrics collection module"""

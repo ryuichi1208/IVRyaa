@@ -1,18 +1,18 @@
-"""メトリクス収集の基底クラス"""
+"""Base class for metrics collection"""
 
 from abc import ABC, abstractmethod
 from typing import Any
 
 
 class MetricsCollector(ABC):
-    """メトリクスコレクターの基底クラス"""
+    """Base class for metrics collectors"""
 
     @abstractmethod
     def collect(self) -> Any:
-        """メトリクスを収集して返す"""
+        """Collect and return metrics"""
         pass
 
     @abstractmethod
     def describe(self) -> str:
-        """このコレクターの説明を返す"""
+        """Return description of this collector"""
         pass

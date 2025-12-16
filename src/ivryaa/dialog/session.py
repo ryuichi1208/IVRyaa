@@ -1,4 +1,4 @@
-"""セッション管理モジュール"""
+"""Session management module"""
 
 from rich.console import Console
 
@@ -9,7 +9,7 @@ from ivryaa.voice import AudioRecorder, SpeechRecognizer, SpeechSynthesizer
 
 
 class DialogSession:
-    """音声対話セッションを管理するクラス"""
+    """Class for managing voice dialog sessions"""
 
     def __init__(self) -> None:
         self.recorder = AudioRecorder()
@@ -21,7 +21,7 @@ class DialogSession:
         self._running = False
 
     def run(self) -> None:
-        """対話セッションを実行する"""
+        """Run the dialog session"""
         self._running = True
         self._greet()
 
@@ -29,19 +29,19 @@ class DialogSession:
             try:
                 self._process_turn()
             except Exception as e:
-                logger.error(f"エラーが発生しました: {e}")
+                logger.error(f"Error occurred: {e}")
                 self.synthesizer.speak("エラーが発生しました。もう一度お試しください。")
 
         self._cleanup()
 
     def _greet(self) -> None:
-        """挨拶メッセージを再生"""
+        """Play greeting message"""
         greeting = "IVRyaaへようこそ。サーバーの状態について音声でお答えします。"
         self.console.print(f"[green]{greeting}[/green]")
         self.synthesizer.speak(greeting)
 
     def _process_turn(self) -> None:
-        """1ターンの対話を処理"""
+        """Process one turn of dialog"""
         self.console.print("\n[cyan]話しかけてください...[/cyan]")
 
         audio_data = self.recorder.record(duration=5.0)
@@ -59,6 +59,6 @@ class DialogSession:
             self._running = False
 
     def _cleanup(self) -> None:
-        """リソースを解放"""
+        """Release resources"""
         self.recorder.close()
-        logger.info("セッションを終了しました")
+        logger.info("Session ended")

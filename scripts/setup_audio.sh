@@ -1,43 +1,43 @@
 #!/bin/bash
-# オーディオデバイス設定スクリプト
+# Audio device setup script
 
 set -e
 
-echo "=== IVRyaa オーディオセットアップ ==="
+echo "=== IVRyaa Audio Setup ==="
 
-# macOSの場合
+# macOS
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "macOS環境を検出しました"
+    echo "Detected macOS environment"
 
-    # PortAudioのインストール確認
+    # Check PortAudio installation
     if ! brew list portaudio &>/dev/null; then
-        echo "PortAudioをインストールしています..."
+        echo "Installing PortAudio..."
         brew install portaudio
     else
-        echo "PortAudioはインストール済みです"
+        echo "PortAudio is already installed"
     fi
 
-    # 入力デバイスの確認
+    # Check input devices
     echo ""
-    echo "利用可能なオーディオ入力デバイス:"
+    echo "Available audio input devices:"
     system_profiler SPAudioDataType | grep -A2 "Input"
 
-# Linuxの場合
+# Linux
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    echo "Linux環境を検出しました"
+    echo "Detected Linux environment"
 
-    # ALSA/PulseAudioの確認
+    # Check ALSA/PulseAudio
     if command -v arecord &>/dev/null; then
         echo ""
-        echo "利用可能なオーディオ入力デバイス:"
+        echo "Available audio input devices:"
         arecord -l
     fi
 
-    # 必要なパッケージのインストール案内
+    # Required packages info
     echo ""
-    echo "必要なパッケージ (Debian/Ubuntu):"
+    echo "Required packages (Debian/Ubuntu):"
     echo "  sudo apt-get install portaudio19-dev python3-pyaudio"
 fi
 
 echo ""
-echo "セットアップ完了"
+echo "Setup complete"

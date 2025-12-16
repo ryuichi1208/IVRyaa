@@ -1,11 +1,11 @@
-"""意図解析モジュール"""
+"""Intent parsing module"""
 
 from dataclasses import dataclass
 from enum import Enum
 
 
 class IntentType(Enum):
-    """意図の種類"""
+    """Types of user intent"""
 
     GET_CPU = "get_cpu"
     GET_MEMORY = "get_memory"
@@ -19,7 +19,7 @@ class IntentType(Enum):
 
 @dataclass
 class Intent:
-    """解析された意図"""
+    """Parsed intent"""
 
     type: IntentType
     confidence: float
@@ -27,7 +27,7 @@ class Intent:
 
 
 class IntentParser:
-    """ユーザーの発話から意図を解析するクラス"""
+    """Class for parsing user intent from speech"""
 
     KEYWORDS: dict[IntentType, list[str]] = {
         IntentType.GET_CPU: ["cpu", "シーピーユー", "プロセッサ", "処理"],
@@ -40,7 +40,7 @@ class IntentParser:
     }
 
     def parse(self, text: str) -> Intent:
-        """テキストから意図を解析する"""
+        """Parse intent from text"""
         text_lower = text.lower()
 
         for intent_type, keywords in self.KEYWORDS.items():

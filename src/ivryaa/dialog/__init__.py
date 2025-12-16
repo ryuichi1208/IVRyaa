@@ -1,4 +1,4 @@
-"""対話管理モジュール"""
+"""Dialog management module"""
 
 from ivryaa.dialog.intent import IntentParser
 from ivryaa.dialog.response import ResponseGenerator

@@ -1,4 +1,4 @@
-"""CPU使用率収集モジュール"""
+"""CPU usage collection module"""
 
 from typing import Any
 
@@ -8,17 +8,17 @@ from ivryaa.metrics.collector import MetricsCollector
 
 
 class CPUCollector(MetricsCollector):
-    """CPU使用率を収集するクラス"""
+    """Class for collecting CPU usage"""
 
     def collect(self) -> float:
-        """CPU使用率をパーセントで返す"""
+        """Return CPU usage as percentage"""
         return psutil.cpu_percent(interval=0.1)
 
     def describe(self) -> str:
-        return "CPU使用率"
+        return "CPU Usage"
 
     def get_detailed(self) -> dict[str, Any]:
-        """詳細なCPU情報を返す"""
+        """Return detailed CPU information"""
         return {
             "percent": self.collect(),
             "count": psutil.cpu_count(),

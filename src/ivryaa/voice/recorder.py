@@ -1,4 +1,4 @@
-"""マイク入力の録音モジュール"""
+"""Microphone input recording module"""
 
 import io
 import wave
@@ -11,7 +11,7 @@ from ivryaa.utils.logger import logger
 
 
 class AudioRecorder:
-    """マイクからの音声を録音するクラス"""
+    """Class for recording audio from microphone"""
 
     def __init__(self) -> None:
         self.sample_rate = settings.audio_sample_rate
@@ -26,10 +26,10 @@ class AudioRecorder:
         return self._audio
 
     def record(self, duration: float = 5.0) -> bytes:
-        """指定した秒数だけ録音してWAV形式のバイトデータを返す"""
+        """Record for specified seconds and return WAV format byte data"""
         audio = self._get_audio()
 
-        logger.info(f"{duration}秒間の録音を開始します...")
+        logger.info(f"Starting {duration} seconds recording...")
 
         stream = audio.open(
             format=self.format,
@@ -49,12 +49,12 @@ class AudioRecorder:
         stream.stop_stream()
         stream.close()
 
-        logger.info("録音完了")
+        logger.info("Recording complete")
 
         return self._frames_to_wav(frames)
 
     def _frames_to_wav(self, frames: list[bytes]) -> bytes:
-        """フレームデータをWAV形式に変換"""
+        """Convert frame data to WAV format"""
         buffer = io.BytesIO()
         with wave.open(buffer, "wb") as wf:
             wf.setnchannels(self.channels)
@@ -64,7 +64,7 @@ class AudioRecorder:
         return buffer.getvalue()
 
     def close(self) -> None:
-        """リソースを解放"""
+        """Release resources"""
         if self._audio is not None:
             self._audio.terminate()
             self._audio = None

@@ -1,4 +1,4 @@
-"""ネットワーク統計収集モジュール"""
+"""Network statistics collection module"""
 
 from typing import Any
 
@@ -8,10 +8,10 @@ from ivryaa.metrics.collector import MetricsCollector
 
 
 class NetworkCollector(MetricsCollector):
-    """ネットワーク統計を収集するクラス"""
+    """Class for collecting network statistics"""
 
     def collect(self) -> dict[str, float]:
-        """ネットワーク統計を返す"""
+        """Return network statistics"""
         net = psutil.net_io_counters()
         return {
             "bytes_sent_mb": net.bytes_sent / (1024**2),
@@ -19,10 +19,10 @@ class NetworkCollector(MetricsCollector):
         }
 
     def describe(self) -> str:
-        return "ネットワーク統計"
+        return "Network Statistics"
 
     def get_detailed(self) -> dict[str, Any]:
-        """詳細なネットワーク情報を返す"""
+        """Return detailed network information"""
         net = psutil.net_io_counters()
         return {
             "bytes_sent_mb": net.bytes_sent / (1024**2),

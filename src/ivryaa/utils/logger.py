@@ -1,4 +1,4 @@
-"""ロギングモジュール"""
+"""Logging module"""
 
 import logging
 import sys
@@ -12,7 +12,7 @@ console = Console()
 
 
 def setup_logger(name: str = "ivryaa") -> logging.Logger:
-    """ロガーをセットアップする"""
+    """Set up and configure the logger"""
     logger = logging.getLogger(name)
     logger.setLevel(settings.log_level)
 

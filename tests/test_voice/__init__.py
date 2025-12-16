@@ -1,1 +1,1 @@
-"""音声処理モジュールのテスト"""
+"""Tests for voice processing module"""

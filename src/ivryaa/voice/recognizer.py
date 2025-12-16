@@ -1,4 +1,4 @@
-"""Whisperによる音声認識モジュール"""
+"""Speech recognition module using Whisper"""
 
 from openai import OpenAI
 
@@ -7,15 +7,15 @@ from ivryaa.utils.logger import logger
 
 
 class SpeechRecognizer:
-    """OpenAI Whisperを使用した音声認識クラス"""
+    """Speech recognition class using OpenAI Whisper"""
 
     def __init__(self) -> None:
         self.client = OpenAI(api_key=settings.openai_api_key)
         self.model = settings.whisper_model
 
     def transcribe(self, audio_data: bytes) -> str:
-        """音声データをテキストに変換する"""
-        logger.info("音声認識を実行中...")
+        """Convert audio data to text"""
+        logger.info("Running speech recognition...")
 
         response = self.client.audio.transcriptions.create(
             model=self.model,
@@ -24,6 +24,6 @@ class SpeechRecognizer:
         )
 
         text = response.text
-        logger.info(f"認識結果: {text}")
+        logger.info(f"Recognition result: {text}")
 
         return text

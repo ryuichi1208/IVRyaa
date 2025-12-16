@@ -1,4 +1,4 @@
-"""メトリクス収集モジュール"""
+"""Metrics collection module"""
 
 from ivryaa.metrics.collector import MetricsCollector
 from ivryaa.metrics.cpu import CPUCollector
@@ -17,7 +17,7 @@ __all__ = [
 
 
 def get_all_metrics() -> dict[str, float]:
-    """全てのメトリクスを取得する"""
+    """Retrieve all metrics"""
     return {
         "cpu": CPUCollector().collect(),
         "memory": MemoryCollector().collect(),

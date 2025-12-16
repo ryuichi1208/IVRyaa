@@ -1,4 +1,4 @@
-"""TTS音声合成モジュール"""
+"""TTS speech synthesis module"""
 
 import subprocess
 import tempfile
@@ -11,7 +11,7 @@ from ivryaa.utils.logger import logger
 
 
 class SpeechSynthesizer:
-    """OpenAI TTSを使用した音声合成クラス"""
+    """Speech synthesis class using OpenAI TTS"""
 
     def __init__(self) -> None:
         self.client = OpenAI(api_key=settings.openai_api_key)
@@ -19,8 +19,8 @@ class SpeechSynthesizer:
         self.voice = settings.tts_voice
 
     def speak(self, text: str) -> None:
-        """テキストを音声に変換して再生する"""
-        logger.info(f"音声合成: {text}")
+        """Convert text to speech and play it"""
+        logger.info(f"Speech synthesis: {text}")
 
         response = self.client.audio.speech.create(
             model=self.model,
@@ -38,7 +38,7 @@ class SpeechSynthesizer:
             temp_path.unlink(missing_ok=True)
 
     def _play_audio(self, path: Path) -> None:
-        """音声ファイルを再生する（macOS対応）"""
+        """Play audio file (macOS compatible)"""
         try:
             subprocess.run(["afplay", str(path)], check=True)
         except FileNotFoundError:

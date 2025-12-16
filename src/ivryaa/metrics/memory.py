@@ -1,4 +1,4 @@
-"""メモリ使用率収集モジュール"""
+"""Memory usage collection module"""
 
 from typing import Any
 
@@ -8,17 +8,17 @@ from ivryaa.metrics.collector import MetricsCollector
 
 
 class MemoryCollector(MetricsCollector):
-    """メモリ使用率を収集するクラス"""
+    """Class for collecting memory usage"""
 
     def collect(self) -> float:
-        """メモリ使用率をパーセントで返す"""
+        """Return memory usage as percentage"""
         return psutil.virtual_memory().percent
 
     def describe(self) -> str:
-        return "メモリ使用率"
+        return "Memory Usage"
 
     def get_detailed(self) -> dict[str, Any]:
-        """詳細なメモリ情報を返す"""
+        """Return detailed memory information"""
         mem = psutil.virtual_memory()
         return {
             "percent": mem.percent,

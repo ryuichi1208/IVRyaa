@@ -1,3 +1,3 @@
-"""IVRyaa - 音声インターフェースによるサーバーメトリクス収集・対話アプリケーション"""
+"""IVRyaa - Voice interface application for server metrics collection and interaction"""
 
 __version__ = "0.1.0"

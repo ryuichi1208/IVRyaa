@@ -1,10 +1,10 @@
-"""設定管理モジュール"""
+"""Configuration management module"""
 
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    """アプリケーション設定"""
+    """Application settings"""
 
     openai_api_key: str = ""
     whisper_model: str = "whisper-1"

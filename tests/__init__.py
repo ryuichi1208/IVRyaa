@@ -1,1 +1,1 @@
-"""IVRyaa テストパッケージ"""
+"""IVRyaa test package"""

@@ -1,1 +1,1 @@
-"""対話管理モジュールのテスト"""
+"""Tests for dialog management module"""

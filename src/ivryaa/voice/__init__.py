@@ -1,4 +1,4 @@
-"""音声処理モジュール"""
+"""Voice processing module"""
 
 from ivryaa.voice.recorder import AudioRecorder
 from ivryaa.voice.recognizer import SpeechRecognizer

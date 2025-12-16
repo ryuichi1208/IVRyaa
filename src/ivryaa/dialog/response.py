@@ -1,4 +1,4 @@
-"""応答生成モジュール"""
+"""Response generation module"""
 
 from ivryaa.dialog.intent import Intent, IntentType
 from ivryaa.metrics import get_all_metrics
@@ -9,10 +9,10 @@ from ivryaa.metrics.network import NetworkCollector
 
 
 class ResponseGenerator:
-    """意図に基づいて応答を生成するクラス"""
+    """Class for generating responses based on intent"""
 
     def generate(self, intent: Intent) -> str:
-        """意図に対応する応答を生成する"""
+        """Generate response for the given intent"""
         handlers = {
             IntentType.GET_CPU: self._handle_cpu,
             IntentType.GET_MEMORY: self._handle_memory,
